@@ -71,16 +71,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-        </dependency>
     </dependencies>
 
     <build>
@@ -157,32 +147,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-            <!--<plugin>-->
-                <!--<artifactId>maven-assembly-plugin</artifactId>-->
-                <!--<configuration>-->
-                    <!--<archive>-->
-                        <!--<manifest>-->
-                            <!--<mainClass>fully.qualified.MainClass</mainClass>-->
-                        <!--</manifest>-->
-                    <!--</archive>-->
-                    <!--<descriptorRefs>-->
-                        <!--<descriptorRef>jar-with-dependencies</descriptorRef>-->
-                    <!--</descriptorRefs>-->
-                <!--</configuration>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>make-assembly</id> &lt;!&ndash; this is used for inheritance merges &ndash;&gt;-->
-                        <!--<phase>package</phase> &lt;!&ndash; bind to the packaging phase &ndash;&gt;-->
-                        <!--<goals>-->
-                            <!--<goal>single</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<outputDirectory>${project.build.directory}/../../interpreter/clj</outputDirectory>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
         </plugins>
     </build>
 
