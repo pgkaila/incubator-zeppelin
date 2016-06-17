@@ -1,0 +1,8 @@
+[
+  {
+    "group": "clj",
+    "name": "clojure",
+    "className": "org.apache.zeppelin.ClojureInterpreter",
+    "properties": {}
+  }
+]
