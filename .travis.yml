@@ -62,6 +62,11 @@ matrix:
       env: TEST_SELENIUM="true" SPARK_VER="1.6.1" HADOOP_VER="2.3" PROFILE="-Pspark-1.6 -Phadoop-2.3 -Ppyspark" BUILD_FLAG="package -DskipTests" TEST_FLAG="verify" TEST_PROJECTS="-pl zeppelin-interpreter,zeppelin-zengine,zeppelin-server,zeppelin-display,spark-dependencies,spark -Dtest=org.apache.zeppelin.AbstractFunctionalSuite -DfailIfNoTests=false"
 
 before_install:
+  - wget http://www-us.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
+  - tar zxvf apache-maven-3.3.9-bin.tar.gz
+  - chmod +x apache-maven-3.3.9/bin/mvn
+  - export M2_HOME=$PWD/apache-maven-3.3.9
+  - export PATH=$PWD/apache-maven-3.3.9/bin:${PATH}
   - "ls -la .spark-dist ${HOME}/.m2/repository/.cache/maven-download-plugin"
   - mkdir -p ~/R
   - echo 'R_LIBS=~/R' > ~/.Renviron
@@ -74,6 +79,8 @@ install:
   - mvn $BUILD_FLAG $PROFILE -B
 
 before_script:
+  - export M2_HOME=$PWD/apache-maven-3.3.9
+  - export PATH=$PWD/apache-maven-3.3.9/bin:${PATH}
   - travis_retry ./testing/downloadSpark.sh $SPARK_VER $HADOOP_VER
   - ./testing/startSparkCluster.sh $SPARK_VER $HADOOP_VER
   - echo "export SPARK_HOME=`pwd`/spark-$SPARK_VER-bin-hadoop$HADOOP_VER" > conf/zeppelin-env.sh
